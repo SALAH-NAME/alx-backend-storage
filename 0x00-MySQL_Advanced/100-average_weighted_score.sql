@@ -1,6 +1,6 @@
-DROP PROCEDURE IF EXISTS ComputeAverageWeightedScoreForUser;
 DELIMITER $$
-CREATE PROCEDURE ComputeAverageWeightedScoreForUser(user_id INT)
+DROP PROCEDURE IF EXISTS ComputeAverageWeightedScoreForUser;
+CREATE PROCEDURE ComputeAverageWeightedScoreForUser (user_id INT)
 BEGIN
     DECLARE w_avg_score FLOAT;
     SET w_avg_score = (SELECT SUM(score * weight) / SUM(weight) 
