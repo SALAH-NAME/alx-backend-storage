@@ -1,3 +1,4 @@
+-- 100-average_weighted_score.sql
 DELIMITER $$
 DROP PROCEDURE IF EXISTS ComputeAverageWeightedScoreForUser;
 CREATE PROCEDURE ComputeAverageWeightedScoreForUser (user_id INT)
