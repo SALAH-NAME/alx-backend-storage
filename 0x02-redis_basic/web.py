@@ -15,12 +15,11 @@ def count_requests(method: Callable) -> Callable:
     def wrapper(url):
         """ wrapper """
         redis_client.incr(f"count:{url}")
-        cached_response = redis_client.get(f'result:{url}')
+        cached_response = redis_client.get(f'cached:{url}')
         if cached_response:
             return cached_response.decode('utf-8')
         response = method(url)
-        redis_client.set(f'count:{url}', 0)
-        redis_client.setex(f'result:{url}', 10, response)
+        redis_client.setex(f'cached:{url}', 10, response)
         return response
     return wrapper
 
